@@ -1,0 +1,15 @@
+{
+  "name": "typeulator",
+  "version": "1.0.0",
+  "description": "Obfuscated typelevel math in TypeScript to implement the Sieve of Eratosthenes",
+  "main": "",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "vivshaw",
+  "license": "MIT"
+}

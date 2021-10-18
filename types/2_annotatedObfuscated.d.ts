@@ -1,19 +1,20 @@
 declare namespace ObfuscatedAnnotated {
-  /* We first define a synonym for never, which will come up a few times later. */
+  /* I first define a synonym for never, which will come up a few times later. */
   type Ѻ = never;
 
   /* -- Define boolean logic -- */
-  /* Our first obfuscation technique is simple:
-   * [explain JS rules]
-   * Here, we use only round Unicode chars that look like an "O". */
+  /* My first obfuscation technique is simple:
+   * JavaScript identifiers may be "any symbol with the Unicode derived core property ID_Start".
+   * (https://mathiasbynens.be/notes/javascript-identifiers-es6)
+   * Here, I use only round Unicode chars that look like an "O". */
   type ⵔ = "ⵔ";
   type 〇 = "〇";
   type O = 〇 | ⵔ;
 
-  /* Our second obfuscation technique is a bit subtler.
+  /* My second obfuscation technique is a bit subtler.
    * It's fine for parameter types named in generic type clauses to shadow top-level types,
-   * as long as those types aren't used in the type definition.
-   * So, we can heavily abuse this technique by naming all parameter types after top level types,
+   * as long as those top-level types aren't used in the type definition.
+   * So, I heavily abuse this technique by naming all parameter types after top level types,
    * to reduce the necessary number of identifiers to only those needed for top-level types. */
   type o<ⵔ extends O, ᴏ, ᦞ> = {
     〇: ᦞ;
@@ -23,14 +24,15 @@ declare namespace ObfuscatedAnnotated {
   type ᦞ<ⵔ extends O, ᴏ extends O> = o<ⵔ, ᴏ, 〇>;
 
   /* -- Define the Peano numbers -- */
-  /* It doesn't matter what Zero actually is,
-   * so we simply make it a synonym for False. */
+  /* In the deobfuscated version, Zero is "0".
+   * But it doesn't matter what Zero actually is,
+   * so here I simply make it a synonym for False. */
   type ଠ = 〇;
   type ᱛ<ଠ> = { ⵔ: ଠ };
 
-  /* Here, we define the Peano numbers 1 through 10.
-   * In the fully obfuscated version, we skip this and just define
-   * 10 with Succ<>. */
+  /* Here, I define the Peano numbers 1 through 10 for clearer output.
+   * In the fully obfuscated version, I skip this and just define
+   * 10 directly with Succ<>. */
   type _1 = ᱛ<ଠ>;
   type _2 = ᱛ<_1>;
   type _3 = ᱛ<_2>;
@@ -75,8 +77,8 @@ declare namespace ObfuscatedAnnotated {
     : Ѻ;
 
   /* -- Define linked lists & basic list operations -- */
-  /* Around here, we begin running out of O's, and have
-   * to start including diacritics. This gets us enough O's
+  /* Around here, I begin running out of O's, and have
+   * to start including diacritics. This gets me enough O's
    * to finish the program. */
   type ѻ = { ⵔ: ⵔ };
   type ϙ = { ⵔ: 〇; 〇: any; ଠ: Ϙ };
@@ -103,20 +105,23 @@ declare namespace ObfuscatedAnnotated {
 
   /* -- Define a method to generated a list of numbers from X
    * down to 1, then immediately call it, reverse it,
-   * and drop the first element. This gets us 2...10. -- */
+   * and drop the first element. This gets me [2...10]. -- */
   type ó<ⵔ> = {
     〇: ⵔ extends ᱛ<infer 〇> ? Ό<ⵔ, ó<〇>> : Ѻ;
     ⵔ: ѻ;
   }[Ⲟ<ⵔ>];
   type Ò = ȱ<ȯ<ó<_10>>>;
 
-  /* -- Now, we execute the Sieve of Eratosthenes for two passes,
-   * using the list of numbers 2..10 and the filter method defined earlier. -- */
+  /* -- Now, I execute the Sieve of Eratosthenes for two passes,
+   * using the list of numbers [2..10] and the filter method defined earlier. -- */
   type ò = Ó<Ò, ό<Ò>>;
   type Ö = Ó<ò, ό<ȱ<ò>>>;
 
   /* -- The result is a list of the prime numbers from 2 to 10!
-   * Sadly, we can't go any further because Typescript yells at me about
-   * excessively deep nested types. -- */
+   * Sadly, we can't go any further because Typescript gives me
+   * the dreaded `ts(2589)` (Type instantiation is excessively deep and possibly infinite.) -- */
   export type ஃ = Ö;
+
+  /* My only further obfuscation technique in the fully obfuscated version,
+   * is to use super weird formatting that makes it tough to read. */
 }

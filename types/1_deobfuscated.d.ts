@@ -12,7 +12,7 @@ declare namespace PeanoPrimes {
   type And<P extends Bool, Q extends Bool> = If<P, Q, False>;
 
   /* -- Define the Peano numbers -- */
-  type _0 = False;
+  type _0 = "0";
   type Succ<Prev> = { prev: Prev };
 
   type _1 = Succ<_0>;
@@ -90,20 +90,20 @@ declare namespace PeanoPrimes {
 
   /* -- Define a method to generated a list of numbers from X
    * down to 1, then immediately call it, reverse it,
-   * and drop the first element. This gets us 2...10. -- */
+   * and drop the first element. This gets us [2...10]. -- */
   type XToOne<X> = {
     false: X extends Succ<infer SX> ? Cons<X, XToOne<SX>> : never;
     true: Nil;
   }[IsZero<X>];
   type TwoToTen = Cdr<Reverse<XToOne<_10>>>;
 
-  /* -- Now, we execute the Sieve of Eratosthenes for two passes,
-   * using the list of numbers 2..10 and the filter method defined earlier. -- */
+  /* -- Now, I execute the Sieve of Eratosthenes for two passes,
+   * using the list of numbers [2..10] and the filter method defined earlier. -- */
   type FirstPass = FilterDivisible<TwoToTen, Car<TwoToTen>>;
   type SecondPass = FilterDivisible<FirstPass, Car<Cdr<FirstPass>>>;
 
   /* -- The result is a list of the prime numbers from 2 to 10!
-   * Sadly, we can't go any further because Typescript yells at me about
-   * excessively deep nested types. -- */
+   * Sadly, we can't go any further because Typescript gives me
+   * the dreaded `ts(2589)` (Type instantiation is excessively deep and possibly infinite.) -- */
   export type Result = SecondPass;
 }

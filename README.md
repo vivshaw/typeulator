@@ -1,5 +1,5 @@
 # typeulator
-### Obfuscated typelevel math in TypeScript to implement the Sieve of Eratosthenes
+### A spectre is haunting TypeScript- the spectre of typelevel math
 
 This repo implements in TypeScript a simple, ages-old algorithm for finding primes- the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). However, I've chosen to implement this at the type level, rather than the value level- and then to obfuscate the heck out of it!
 

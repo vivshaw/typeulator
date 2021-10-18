@@ -12,6 +12,6 @@ Three variants are provided:
 
 Thanks to:
 
-* @YBogomolov and his [talk on type-level programming in Typescript](https://github.com/YBogomolov/talk-typelevel-ts)
-* @majjoha and his [blog post on the same topic](https://mjj.io/2021/03/29/type-level-programming-in-typescript/)
-* @mathiasbynens and his [notes on permitted JavaScript identifiers](https://mathiasbynens.be/notes/javascript-identifiers-es6)
+* [@YBogomolov](https://github.com/YBogomolov) and his [talk on type-level programming in Typescript](https://github.com/YBogomolov/talk-typelevel-ts)
+* [@majjoha](https://github.com/majjoha) and his [blog post on the same topic](https://mjj.io/2021/03/29/type-level-programming-in-typescript/)
+* [@mathiasbynens](https://github.com/mathiasbynens) and his [notes on permitted JavaScript identifiers](https://mathiasbynens.be/notes/javascript-identifiers-es6)
